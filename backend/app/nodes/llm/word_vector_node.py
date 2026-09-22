@@ -243,7 +243,8 @@ class WordVectorNode(BaseNode):
         # lookup is case-insensitive, and an encoder handed "  " would embed
         # a blank and hand back a row nothing names.
         keys = [key for key in (str(w).lower().strip() for w in words) if key]
-
+        if not in keys:
+            raise ValuError("...")
         oov: list[str] = []
         vocab_size: int | None = None
         stopped_at: int | None = None
